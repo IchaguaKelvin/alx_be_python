@@ -1,21 +1,24 @@
-# 1. Prompt User for Input
-task_description = input("Enter your task description: ")
-task_priority = input("Enter the priority (high, medium, low): ")
-time_bound = input("Is the task time-bound? (yes/no): ")
+# Prompt for a single task
+task = input("Enter your task: ")
+priority = input("Priority (high/medium/low): ")
+time_bound = input("Is it time-bound? (yes/no): ")
 
-# 2. Provide a Personalized Reminder
-reminder = f"Task: {task_description}"
-
-if task_priority == "high" and time_bound == "yes":
-    reminder += " -> Priority: High, Time-bound: Yes. This is URGENT and should be done immediately."
-elif task_priority == "high" and time_bound == "no":
-    reminder += " -> Priority: High, Time-bound: No. This is important, schedule it soon."
-elif task_priority == "medium" and time_bound == "yes":
-    reminder += " -> Priority: Medium, Time-bound: Yes. This needs to be done today."
-elif task_priority == "low" and time_bound == "no":
-    reminder += " -> Priority: Low, Time-bound: No. This is not urgent, you can do it when you have free time."
-else:
-    reminder += " -> Priority: Unknown, Time-bound: Unknown. Check your task details."
-
-# 3. Output the Reminder
-print("Reminder:", reminder)
+# Process the task based on priority and time sensitivity
+match priority:
+    case "high":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a high priority task. Complete it as soon as possible.")
+    case "medium":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a medium priority task that requires attention today.")
+        else:
+            print(f"Reminder: '{task}' is a medium priority task. Consider completing it when you have free time.")
+    case "low":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a low priority task that requires attention today.")
+        else:
+            print(f"Reminder: '{task}' is a low priority task. Consider completing it when you have free time.")
+    case _:
+        print(f"Reminder: '{task}' is a task. Please specify its priority level.")
