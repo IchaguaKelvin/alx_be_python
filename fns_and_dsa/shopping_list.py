@@ -1,4 +1,4 @@
-# Initialize the shopping list
+# Initialize the shopping list globally as an array
 shopping_list = []
 
 def display_menu():
@@ -38,15 +38,22 @@ def main():
     """Main function to run the shopping list manager loop."""
     while True:
         display_menu()
-        choice = input("Enter your choice (1-4): ")
+        
+        # This block ensures the input is treated as a number
+        try:
+            choice = int(input("Enter your choice (1-4): "))
+        except ValueError:
+            # Handle non-integer input gracefully
+            choice = 0 
 
-        if choice == '1':
+        # Now compare to integers
+        if choice == 1:
             add_item()
-        elif choice == '2':
+        elif choice == 2:
             remove_item()
-        elif choice == '3':
+        elif choice == 3:
             view_list()
-        elif choice == '4':
+        elif choice == 4:
             print("Exiting Shopping List Manager. Goodbye!")
             break
         else:
