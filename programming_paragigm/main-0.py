@@ -1,9 +1,10 @@
-# main-0.py (ORIGINAL - PUT THIS BACK)
+# main-0.py
 from bank_account import BankAccount
 
 def main():
+    # Initialize account (starting balance = 0)
     account = BankAccount()
-    
+
     import sys
     if len(sys.argv) != 2:
         print("Usage: python main-0.py <operation>")
